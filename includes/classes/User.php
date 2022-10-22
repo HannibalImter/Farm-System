@@ -35,13 +35,14 @@ class User{
     }
 
     public function isValidLogin($pPassword){
-        $sql = "SELECT * FROM users WHERE username = :username";
+        $sql = "SELECT * FROM users WHERE username = :username and deleted_at = :null";
         
         $values = array(
-            array(':username', $this->username)
+            array(':username', $this->username),
+            array(':null', "")
         );
 
-        $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+        $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
       
         if (isset($result['password']) && $result['password'] == $pPassword )
             return $result;

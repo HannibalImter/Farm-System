@@ -45,7 +45,7 @@
                 $farm = new Farm($farmName,$farmCity,$farmAddress);
                 $farm->setFarm();
 
-                header("Location: index.php?new=1");                
+                header("Location: login.php?new=1");                
             }
         }
             

@@ -2,7 +2,7 @@
 
     session_start();
     include "UI_include.php";
-    include INC_DIR."/process/p-index.php";
+    include INC_DIR."/process/p-login.php";
     include INC_DIR.'header.html';
 
 ?>

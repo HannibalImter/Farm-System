@@ -8,5 +8,3 @@ Alaref Abu-Shaalah -----
 Hannibal Emter 172138 
 
 This Project not by any chance has been taken from the Github or Youtube or etc ..
-
-Special Thanks to the Teacher or this subject MR.Mustapha Gabaj.

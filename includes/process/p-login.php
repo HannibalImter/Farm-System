@@ -14,17 +14,27 @@
         }
         else
         {
-            $admin = new Admin($username);
+            $member = new User($username);
 
-            if (!$admin->isValidLogin($_POST['password']))
+            $result=$member->isValidLogin($_POST['password']);
+
+            if ($result == false)
             {
                 $msg = "Invalid Username or Password";
             }
             else
             {
+
                 $_SESSION['username'] = $username;
-                $_SESSION['is_admin'] = true;
-                header("Location: write.php");                
+                $_SESSION['id'] = $result['id'];
+                $_SESSION['password'] = $result['password'];//Temproray
+
+                if($result['isAdmin'])
+                {    
+                    $_SESSION['isAdmin'] = 1;   
+                }
+
+                header("Location: index.php?welcome=1");                
             }
         }
             
