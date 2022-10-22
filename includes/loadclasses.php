@@ -1,6 +1,7 @@
 <?php
 
-    function myAutoloader($class) {
+    function myAutoloader($class)
+    {
         include_once INC_DIR.'classes/'.$class.'.php';
     }
 
