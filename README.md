@@ -1,2 +1,2 @@
 # Farm-System
-Farm Management System - Final Project -
+Farm Management System - Final Project for subject PHP.
