@@ -3,14 +3,23 @@
     include "UI_include.php";
     include INC_DIR."/process/p-signupAdmin.php";
     include INC_DIR.'header.html';
+    
 
 ?>
+    <header class="header">
+            <h1 class="logo"><a href="#">My Farm Mangment system</a></h1>
+            <ul class="main-nav">
+            <li><a href="/Farm-website-main/signupadmin.php">SignUp</a></li>
+            <li><a href="/Farm-website-main/Login.php">Login</a></li>
+        </ul>
+    </header> 
+
 <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
     <body>
         <div class="form">
             <div class="heading">
                 <i class="material-icons">create</i>
-                <h4 class="modal-title">Sign Up for An Account</h4>
+                <h4 class="modal-title">Sign Up</h4>
             </div>
             
             <form action="" method="post" class="form-horizontal">

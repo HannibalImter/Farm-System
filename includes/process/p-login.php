@@ -28,13 +28,12 @@
                 $_SESSION['username'] = $username;
                 $_SESSION['id'] = $result['id'];
                 $_SESSION['password'] = $result['password'];//Temproray
+                $_SESSION['isAdmin'] = $result['isAdmin'];
 
-                if($result['isAdmin'])
-                {    
-                    $_SESSION['isAdmin'] = 1;   
-                }
+                echo $result['isAdmin'];
+                echo $_SESSION['isAdmin'];
 
-                header("Location: index.php?welcome=1");                
+                header("Location: home.php");                
             }
         }
             

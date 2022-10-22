@@ -7,6 +7,14 @@
 
 ?>
 
+<header class="header">
+            <h1 class="logo"><a href="#">My Farm Mangment system</a></h1>
+            <ul class="main-nav">
+            <li><a href="/Farm-website-main/signupadmin.php">SignUp</a></li>
+            <li><a href="/Farm-website-main/Login.php">Login</a></li>
+        </ul>
+</header> 
+
     <body>
     <div class="form">   
 
@@ -16,12 +24,14 @@
                 echo 'ACCOUNT CREATED SUCCESSFULLY';
         ?>
         </div>
+
         <div class="heading">
             <i class="material-icons">account_box</i>
             <h4 class="modal-title">Login to Your Account</h4>
         </div>
 
         <form action="" method="post" class="form-horizontal">
+            
             <div class="form-group top"><i class="material-icons">face</i>
                 <label class="control-label">Username</label>
                 <div>
@@ -41,7 +51,7 @@
                 </div>  
             </div>		              
         </form>			
-        <div class="bottom-text">Don't have an account? <a href="signup.php">Sign up</a></div>
+        <div class="bottom-text">Don't have an Admin account? <a href="/Farm-website-main/signupAdmin.php">Sign up</a></div>
     </div>
     </body>
 </html>                                		                            
