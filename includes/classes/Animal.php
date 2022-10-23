@@ -1,6 +1,31 @@
 <?php
 include_once 'Database.php';
 /* How To use This Class
+#to set animal class values
+
+
+#To add new animal
+
+
+#To delete an animal by id
+
+
+#To delete an animal by state
+
+
+#To get an animal by id
+
+
+#To get all animals
+
+
+#To increase animal quantity
+
+
+
+#A method to do a specific query.
+
+
 
 */
 class Animal
