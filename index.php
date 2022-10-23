@@ -2,7 +2,7 @@
 /*
 this index file to testing classes.
 */
-include_once 'includes/classes/Supplier.php';
+include_once 'includes/classes/Barn.php';
 
 echo "<h1>Hello World!</h1>";
 
@@ -10,3 +10,9 @@ echo "<h1>Hello World!</h1>";
 // $supplier = $s1->getSupplier(23);
 
 // print_r($supplier);
+
+$b1 = new Barn();
+$b1->insertNewBarn('الحظيرة', 5);
+
+$barns = $b1->getAllBarns();
+print_r($barns);
