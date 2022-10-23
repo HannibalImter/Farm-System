@@ -11,8 +11,8 @@ echo "<h1>Hello World!</h1>";
 
 // print_r($supplier);
 
-$b1 = new Barn();
-$b1->insertNewBarn('الحظيرة', 5);
+$b1 = new Barn('الحظيرة', 5);
+$b1->insertNewBarn();
 
 $barns = $b1->getAllBarns();
 print_r($barns);
