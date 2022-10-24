@@ -3,49 +3,64 @@
     include "UI_include.php";
     include INC_DIR."/process/p-login.php";
     include INC_DIR.'header.html';
+    include_once 'includes/classes/Supplier.php';
 ?>
 
 <header class="header">
-            <h1 class="logo"><a href="#">My Farm Mangment system</a></h1>
-            <ul class="main-nav">
-            <li><a href="/Farm-website-main/signupadmin.php">SignUp</a></li>
-            <li><a href="/Farm-website-main/Login.php">Login</a></li>
-        </ul>
+  <h1 class="logo"><a href="#">My Farm Mangment system</a></h1>
+  <ul class="main-nav">
+  </ul>
 </header>
+<script src="js-files/w3.js"></script>
+
 <body>
-    <div class="form">
-        <div class = "new">
-            <?php
-            if (isset($_GET['new']))
-            echo 'ACCOUNT CREATED SUCCESSFULLY';
-            ?>
-            </div>
-            <div class="heading">
-                <em class="material-icons">account_box</em>
-                <h4 class="modal-title">Login to Your Account</h4>
-            </div>
-            <form action="" method="post" class="form-horizontal">
-                <div class="form-group top"><em class="material-icons">face</em>
-                <label class="control-label">Username</label>
-                <div>
-                    <input type="text" class="form-control" name="username"
-                     <?php $h->keepValues($username, 'textbox'); ?> >
-                    </div>
-                </div>
-                <div class="form-group"><em class="material-icons">vpn_key</em>
-                    <label class="control-label">Password</label>
-                    <div>
-                        <input type="password" class="form-control" name="password">
-                    </div>
-                </div>
-                <div class = "formerror"><?php echo $msg; ?></div>
-                <div class="form-group">
-                    <div>
-                        <center><button type="submit" name = "submit" class="btn btn-primary btn-lg">Log In</button></center>
-                    </div>
-                </div>
-            </form>
-            <div class="bottom-text">Don't have an Admin account? <a href="/Farm-website-main/signupAdmin.php">Sign up</a></div>
-        </div>
-    </body>
+
+  <h2>All Farm Suppliers</h2>
+
+  <table id="supplierDisplay">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <!-- <th>Delete</th> -->
+    </tr>
+    <tr w3-repeat="suppliers">
+      <td>{{id}}</td>
+      <td>{{name}}</td>
+      <td>{{phone}}</td>
+      <!-- <th>{{deleteID}}</th> -->
+    </tr>
+  </table>
+
+  <br>
+  <form action="/p-insertSupllier.php">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone">
+    <input type="submit" value="Submit">
+  </form>
+
+
+</body>
+
+<?php
+$suppliers = new Supplier();
+$phpSuppliers = $suppliers->getAllSuppliers();
+?>
+<script>
+  const phpSuppliers = '<?php echo json_encode($phpSuppliers); ?>';
+  const suppliersObjArray = Object.values(JSON.parse(phpSuppliers));
+  w3.displayObject("supplierDisplay", {"suppliers": suppliersObjArray});
+
+
+  // let myObject = {"suppliers": [
+  //   {"id": 1, "name": "ahmed", "phone": "0921111111", "deleteID": 12},
+  //    {"id": 2, "name": "mohammed", "phone": "0922222222", "deleteID": 12},
+  //     {"id": 3, "name": "hani", "phone": "092133333", "deleteID": 12}
+  //   ]
+  // };
+</script>
+
+
 </html>
