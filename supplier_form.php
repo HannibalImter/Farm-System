@@ -11,13 +11,48 @@
   <ul class="main-nav">
   </ul>
 </header>
+<style>
+*{
+  box-sizing: border-box;
+}
+.suppliesTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.suppliesTable td, .suppliesTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.suppliesTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.suppliesTable tr:hover {background-color: #ddd;}
+
+.suppliesTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+.heading{
+  margin: auto;
+  width: 50%;
+  border: 2px solid green;
+  padding: 10px;
+  text-align: center;
+}
+
+</style>
 <script src="js-files/w3.js"></script>
 
 <body>
 
-  <h2>All Farm Suppliers</h2>
-
-  <table id="supplierDisplay">
+  <br>
+  <h2 class="heading">All Farm Suppliers</h2>
+  <table id="supplierDisplay" class="suppliesTable">
     <tr>
       <th>ID</th>
       <th>Name</th>
