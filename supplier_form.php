@@ -45,6 +45,121 @@
   text-align: center;
 }
 
+/* Css For The insert Form */
+
+.container{
+  border-radius: 10px;
+  background-color: #13c555;
+  padding: 20px;
+}
+
+body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .form-inline {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+    }
+
+    .form-inline label {
+        margin: 5px 10px 5px 0;
+    }
+
+    .form-inline input {
+        vertical-align: middle;
+        margin: 5px 10px 5px 0;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+
+    .form-inline button {
+        padding: 10px 20px;
+        background-color: dodgerblue;
+        border: 1px solid #ddd;
+        color: white;
+        cursor: pointer;
+    }
+
+    .form-inline button:hover {
+        background-color: royalblue;
+    }
+
+    @media (max-width: 800px) {
+        .form-inline input {
+            margin: 10px 0;
+        }
+
+        .form-inline {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+
+/* Dropdown select css */
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+  
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 0px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
 </style>
 <script src="js-files/w3.js"></script>
 
@@ -68,15 +183,33 @@
   </table>
 
   <br>
-  <form action="/p-insertSupllier.php">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name">
-    <label for="phone">Phone Number:</label>
-    <input type="text" id="phone" name="phone">
-    <input type="submit" value="Submit">
-  </form>
+  <div class="container">
+    <form class="form-inline" action="/action_page.php">
+      <label for="name">Supplier Name:</label>
+      <input type="name" id="sName" placeholder="Supplier Name..." name="sName">
+      <label for="phone">Supplier phone:</label>
+      <input type="phone" id="phone" placeholder="Supplier phone..." name="phone">
+      <button type="submit">Add Supplier</button>
+    </form>
+  </div>
+  <br>
+  <div class="container">
+    <form  class="form-inline" action="/action.php">
+      <label for="name">Supplier ID:</label>
+      <div class="custom-select" style="width:200px;">
+        <select name="sIDs" id="sIDs">
+          <option w3-repeat="ids">{{id}}</option>
+        </select>
+      </div>
+      <label for="phone">Supplier Name:</label>
+      <input type="name" id="sName" placeholder="Supplier Name..." name="sName">
+      <button type="submit">Remove Supplier</button>
+    </form>
+  </div>
+<br>
+  <br><br><br>
 
-
+          
 </body>
 
 <?php
@@ -87,15 +220,19 @@ $phpSuppliers = $suppliers->getAllSuppliers();
   const phpSuppliers = '<?php echo json_encode($phpSuppliers); ?>';
   const suppliersObjArray = Object.values(JSON.parse(phpSuppliers));
   w3.displayObject("supplierDisplay", {"suppliers": suppliersObjArray});
+  w3.displayObject("sIDs", {"ids": suppliersObjArray});
 
-
-  // let myObject = {"suppliers": [
-  //   {"id": 1, "name": "ahmed", "phone": "0921111111", "deleteID": 12},
-  //    {"id": 2, "name": "mohammed", "phone": "0922222222", "deleteID": 12},
-  //     {"id": 3, "name": "hani", "phone": "092133333", "deleteID": 12}
-  //   ]
-  // };
+/*
+  let myObject = {"suppliers": [
+    {"id": 1, "name": "ahmed", "phone": "0921111111", "deleteID": 12},
+     {"id": 2, "name": "mohammed", "phone": "0922222222", "deleteID": 12},
+      {"id": 3, "name": "hani", "phone": "092133333", "deleteID": 12}
+    ]
+  };
+*/
 </script>
+
+<script src="js-files/dropdown.js"></script>
 
 
 </html>

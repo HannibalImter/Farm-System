@@ -1,0 +1,175 @@
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .form-inline {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+    }
+
+    .form-inline label {
+        margin: 5px 10px 5px 0;
+    }
+
+    .form-inline input {
+        vertical-align: middle;
+        margin: 5px 10px 5px 0;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+
+    .form-inline button {
+        padding: 10px 20px;
+        background-color: dodgerblue;
+        border: 1px solid #ddd;
+        color: white;
+        cursor: pointer;
+    }
+
+    .form-inline button:hover {
+        background-color: royalblue;
+    }
+
+    @media (max-width: 800px) {
+        .form-inline input {
+            margin: 10px 0;
+        }
+
+        .form-inline {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+</style>
+
+<body>
+    <form class="form-inline" action="/action_page.php">
+        <div>
+            <label for="name">Supplier Name:</label>
+            <input type="name" id="sName" placeholder="Supplier Name..." name="sName">
+            <label for="phone">Supplier phone:</label>
+            <input type="phone" id="phone" placeholder="Supplier phone..." name="phone">
+            <button type="submit">Add Supplier</button>
+        </div>
+        <br>
+        <div>
+            <label for="name">Supplier ID:</label>
+            <select name="sIDs" id="sIDs">
+                <option value="id1">id1</option>
+                <option value="id2">id2</option>
+                <option value="id3">id4</option>
+            </select>
+            <label for="phone">Supplier Name:</label>
+            <input type="name" id="sName" placeholder="Supplier Name..." name="sName">
+            <button type="submit">Add Supplier</button>
+        </div>
+    </form>
+
+</body>
+
+
+
+
+
+<!-- 
+
+    <style>
+        input[type=text], select {
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container{
+  border-radius: 10px;
+  background-color: #13c555;
+  padding: 20px;
+}
+.addBtn{
+  border-radius: 10px;
+  background-color: #13c555;
+  padding: 20px;
+}
+.col-25 {
+  float: left;
+  /* width: 25%; */
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+    </style>
+
+
+  <div class="container">
+    <form action="/action_page.php">
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">Supplier Name</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="sName" name="sName" placeholder="supllier name..">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="phone">Phone Number</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="phone" name="phone" placeholder="Phone Number..">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <input type="submit" class="addBtn" value="Add Supplier">
+        </div>
+    </form>
+</div>
+
+ -->
