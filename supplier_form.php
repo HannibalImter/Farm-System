@@ -185,9 +185,9 @@
     <form class="form-inline" method="POST" action="includes/process/p-supplier.php">
       <input name="addForm" value="true" style="display: none"></input>
       <label for="name">Supplier Name:</label>
-      <input type="name" id="sName" placeholder="Supplier Name..." name="sName">
+      <input type="name" id="sName" placeholder="Supplier Name..." name="sName" required>
       <label for="phone">Supplier phone:</label>
-      <input type="phone" id="phone" placeholder="Supplier phone..." name="phone">
+      <input type="phone" id="phone" placeholder="Supplier phone..." name="phone" required>
       <button type="submit">Add Supplier</button>
     </form>
   </div>
@@ -208,8 +208,7 @@
   </div>
 <br>
   <br><br><br>
-
-          
+ 
 </body>
 
 <?php
@@ -221,15 +220,6 @@ $phpSuppliers = $suppliers->getAllSuppliers();
   const suppliersObjArray = Object.values(JSON.parse(phpSuppliers));
   w3.displayObject("supplierDisplay", {"suppliers": suppliersObjArray});
   w3.displayObject("sIDs", {"ids": suppliersObjArray});
-
-/*
-  let myObject = {"suppliers": [
-    {"id": 1, "name": "ahmed", "phone": "0921111111", "deleteID": 12},
-     {"id": 2, "name": "mohammed", "phone": "0922222222", "deleteID": 12},
-      {"id": 3, "name": "hani", "phone": "092133333", "deleteID": 12}
-    ]
-  };
-*/
 </script>
 
 <script src="js-files/dropdown.js"></script>
