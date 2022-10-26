@@ -12,154 +12,154 @@
   </ul>
 </header>
 <style>
-*{
-  box-sizing: border-box;
-}
-.suppliesTable {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  *{
+    box-sizing: border-box;
+  }
+  .suppliesTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-.suppliesTable td, .suppliesTable th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+  .suppliesTable td, .suppliesTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
 
-.suppliesTable tr:nth-child(even){background-color: #f2f2f2;}
+  .suppliesTable tr:nth-child(even){background-color: #f2f2f2;}
 
-.suppliesTable tr:hover {background-color: #ddd;}
+  .suppliesTable tr:hover {background-color: #ddd;}
 
-.suppliesTable th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-.heading{
-  margin: auto;
-  width: 50%;
-  border: 2px solid green;
-  padding: 10px;
-  text-align: center;
-}
+  .suppliesTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+  .heading{
+    margin: auto;
+    width: 50%;
+    border: 2px solid green;
+    padding: 10px;
+    text-align: center;
+  }
 
-/* Css For The insert Form */
+  /* Css For The insert Form */
 
-.container{
-  border-radius: 10px;
-  background-color: #13c555;
-  padding: 20px;
-}
+  .container{
+    border-radius: 10px;
+    background-color: #13c555;
+    padding: 20px;
+  }
 
-body {
-        font-family: Arial, Helvetica, sans-serif;
+  body {
+          font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .form-inline {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+  }
+
+  .form-inline label {
+      margin: 5px 10px 5px 0;
+  }
+
+  .form-inline input {
+      vertical-align: middle;
+      margin: 5px 10px 5px 0;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+  }
+
+  .form-inline button {
+      padding: 10px 20px;
+      background-color: dodgerblue;
+      border: 1px solid #ddd;
+      color: white;
+      cursor: pointer;
+  }
+
+  .form-inline button:hover {
+      background-color: royalblue;
+  }
+
+  @media (max-width: 800px) {
+    .form-inline input {
+      margin: 10px 0;
     }
 
     .form-inline {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
+      flex-direction: column;
+      align-items: stretch;
     }
+  }
 
-    .form-inline label {
-        margin: 5px 10px 5px 0;
-    }
+  /* Dropdown select css */
+  /*the container must be positioned relative:*/
+  .custom-select {
+    position: relative;
+    font-family: Arial;
+  }
 
-    .form-inline input {
-        vertical-align: middle;
-        margin: 5px 10px 5px 0;
-        padding: 10px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-    }
+  .custom-select select {
+    display: none;
+  }
 
-    .form-inline button {
-        padding: 10px 20px;
-        background-color: dodgerblue;
-        border: 1px solid #ddd;
-        color: white;
-        cursor: pointer;
-    }
+  .select-selected {
+    background-color: DodgerBlue;
+    
+  }
 
-    .form-inline button:hover {
-        background-color: royalblue;
-    }
+  /*style the arrow inside the select element:*/
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
 
-    @media (max-width: 800px) {
-        .form-inline input {
-            margin: 10px 0;
-        }
+  /*point the arrow upwards when the select box is open (active):*/
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }
 
-        .form-inline {
-            flex-direction: column;
-            align-items: stretch;
-        }
-    }
+  /*style the items (options), including the selected item:*/
+  .select-items div,.select-selected {
+    color: #ffffff;
+    padding: 0px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+  }
 
-/* Dropdown select css */
-/*the container must be positioned relative:*/
-.custom-select {
-  position: relative;
-  font-family: Arial;
-}
+  /*style items (options):*/
+  .select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
 
-.custom-select select {
-  display: none;
-}
+  /*hide the items when the select box is closed:*/
+  .select-hide {
+    display: none;
+  }
 
-.select-selected {
-  background-color: DodgerBlue;
-  
-}
-
-/*style the arrow inside the select element:*/
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-/*point the arrow upwards when the select box is open (active):*/
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
-
-/*style the items (options), including the selected item:*/
-.select-items div,.select-selected {
-  color: #ffffff;
-  padding: 0px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-  user-select: none;
-}
-
-/*style items (options):*/
-.select-items {
-  position: absolute;
-  background-color: DodgerBlue;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-/*hide the items when the select box is closed:*/
-.select-hide {
-  display: none;
-}
-
-.select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 </style>
 <script src="js-files/w3.js"></script>
 
@@ -172,19 +172,18 @@ body {
       <th>ID</th>
       <th>Name</th>
       <th>Phone</th>
-      <!-- <th>Delete</th> -->
     </tr>
     <tr w3-repeat="suppliers">
       <td>{{id}}</td>
       <td>{{name}}</td>
       <td>{{phone}}</td>
-      <!-- <th>{{deleteID}}</th> -->
     </tr>
   </table>
 
   <br>
   <div class="container">
-    <form class="form-inline" action="/action_page.php">
+    <form class="form-inline" method="POST" action="includes/process/p-supplier.php">
+      <input name="addForm" value="true" style="display: none"></input>
       <label for="name">Supplier Name:</label>
       <input type="name" id="sName" placeholder="Supplier Name..." name="sName">
       <label for="phone">Supplier phone:</label>
@@ -194,7 +193,8 @@ body {
   </div>
   <br>
   <div class="container">
-    <form  class="form-inline" action="/action.php">
+    <form class="form-inline" method="POST" action="includes/process/p-supplier.php">
+    <input name="deleteForm" value="true" style="display: none"></input>
       <label for="name">Supplier ID:</label>
       <div class="custom-select" style="width:200px;">
         <select name="sIDs" id="sIDs">
