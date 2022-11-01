@@ -13,6 +13,10 @@ $s1->deleteSupplier();
 $s1 = new Supplier();
 $s1->deleteSupplier("phone number");
 
+#To update a supplier
+$s1 = new Supplier();
+$s1->updateSupplier($id, $name, $phone);
+
 #To get a supplier by id
 $s1 = new Supplier();
 $supplier = $s1->getSupplier(id);
@@ -89,6 +93,23 @@ class Supplier
             $this->db->queryDB($sql, Database::EXECUTE, $values);
         } catch (\Throwable $th) {
             echo 'An error occurred while trying to delete a supplier ';
+            throw $th;
+        }
+    }
+
+    public function updateSupplier($id=-1, $name='', $phone='')
+    {
+        $sql = "UPDATE suppliers SET name = :name, phone = :phone WHERE id = :id";
+        $values = array(
+            array(':id', $id),
+            array(':name', $name),
+            array(':phone', $phone)
+        );
+        try {
+            $this->db->queryDB($sql, Database::EXECUTE, $values);
+        } catch (\Throwable $th) {
+            echo 'An error occurred while trying to update a supplier';
+            echo $th->getMessage();
             throw $th;
         }
     }
