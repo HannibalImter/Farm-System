@@ -4,14 +4,32 @@ include INC_DIR."/process/p-login.php";
 include INC_DIR.'header.html';
 include_once INC_DIR.'/classes/Supplier.php';
 
+$id = -1;
 $name = '';
 $phone = '';
 
 $errorMsg = '';
 $sucessMsg = '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
+    if (!isset($_GET['id'])) {
+        header("location: ../../../supplier_form.php");
+        exit;
+    }
+    $id = $_GET['id'];
+    $s1 = new Supplier();
+    $sup = $s1->getSupplier($id);
+    if (!$sup) {
+        header("location: ../../../supplier_form.php");
+        exit;
+    }
+    $name = $sup['name'];
+    $phone = $sup['phone'];
+
+
+} else {
+    $id = $_POST['id'];
     $name = $_POST['name'];
     $phone = $_POST['phone'];
 
@@ -20,11 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorMsg = 'All fields are required';
             break;
         }
-        $addSup = new Supplier($name, $phone);
-        $addSup->insertNewSupplier();
+        $s1 = new Supplier();
+        echo "id is: $id"."<br>";
+        echo "id is: $name"."<br>";
+        echo "id is: $phone"."<br>";
 
-        $name = '';
-        $phone = '';
+        try {
+            $s1->updateSupplier($id, $name, $phone);
+        } catch (\Throwable $th) {
+            $errorMsg = 'Invalid query';
+            break;
+        }
 
         $sucessMsg = 'Supplier added successfully';
 
@@ -32,15 +56,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
 
     } while (false);
+
 }
-
-
 
 
 ?>
 
 <body>
-    
     <div class="container my-5">
         <h2>New Supplier</h2>
         <?php
@@ -54,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         ?>
         <form action="" method="POST">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Name</label>
                 <div class="col-sm-6">
@@ -91,8 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </form>
     </div>
-
-
 
 </body>
 </html>
