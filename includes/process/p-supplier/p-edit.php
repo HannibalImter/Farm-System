@@ -11,17 +11,19 @@ $phone = '';
 $errorMsg = '';
 $sucessMsg = '';
 
+define("REDIRECT", "location: ../../../supplier_form.php");
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (!isset($_GET['id'])) {
-        header("location: ../../../supplier_form.php");
+        header(REDIRECT);
         exit;
     }
     $id = $_GET['id'];
     $s1 = new Supplier();
     $sup = $s1->getSupplier($id);
     if (!$sup) {
-        header("location: ../../../supplier_form.php");
+        header(REDIRECT);
         exit;
     }
     $name = $sup['name'];
@@ -38,10 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $errorMsg = 'All fields are required';
             break;
         }
+
         $s1 = new Supplier();
-        echo "id is: $id"."<br>";
-        echo "id is: $name"."<br>";
-        echo "id is: $phone"."<br>";
 
         try {
             $s1->updateSupplier($id, $name, $phone);
@@ -52,14 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         $sucessMsg = 'Supplier added successfully';
 
-        header("location: ../../../supplier_form.php");
+        header(REDIRECT);
         exit;
 
     } while (false);
-
 }
-
-
 ?>
 
 <body>
