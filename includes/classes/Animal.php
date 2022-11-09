@@ -1,42 +1,40 @@
 <?php
 include_once 'Database.php';
 /* How To use This Class
-#to set animal class values
-
 
 #To add new animal
-
+animal = new Animal();
+animal->setValues(param1, param2, param3...);
+animale->insertNewAnimal();
 
 #To delete an animal by id
 
-
-#To delete an animal by state
-
+animale->deleteAnimal($id);
 
 #To get an animal by id
-
+animale->getAnimal($id);
 
 #To get all animals
-
+animale->getAllAnimals();
 
 #To increase animal quantity
+animale->increaseQuantity();
 
+#To update an animal
+animale->updateAnimal($id);
 
+#To mark cycle as completed
+animale->markAsEnd($id);
 
 #A method to do a specific query.
-
-
-
+animale->doQuery();
 */
 class Animal
 {
-    private $id; //auto
     private $animalCategoriesID;
-    private $start_date; //auto
-    private $endDate = null;
     private $barnID;
     private $quantity;
-    private $state;
+    private $state = '';
     private $supplierID;
     private $price;
     private $cost;
@@ -46,7 +44,7 @@ class Animal
         $this->db = new Database();
     }
 
-    public function setValues($animeCatID, $bID, $quan, $supID, $price, $cost, $state='')
+    public function setValues($animeCatID, $quan, $state, $price, $cost, $bID, $supID)
     {
         $this->animalCategoriesID = $animeCatID;
         $this->barnID = $bID;
@@ -77,7 +75,8 @@ class Animal
             $this->db->queryDB($sql, Database::EXECUTE, $values);
             return true;
         } catch (\Throwable $th) {
-            echo "An error occurred while trying to insert a new Animal \n";
+            echo "An error occurred while trying to insert a new Animal."."<br>";
+            echo $th->getMessage();
             throw $th;
         }
     }
@@ -89,22 +88,8 @@ class Animal
             $this->db->queryDB($sql, Database::EXECUTE);
             return true;
         } catch (\Throwable $th) {
-            echo "An error occurred while trying to delete the Animal: \n";
-            throw $th;
-        }
-    }
-
-    public function deleteSupplierByState($state = '')
-    {
-        $sql = "UPDATE animals SET deleted_at = NOW() WHERE state = :state";
-        $values = array(
-            array(':state', $state)
-        );
-        try {
-            $this->db->queryDB($sql, Database::EXECUTE, $values);
-            return true;
-        } catch (\Throwable $th) {
-            echo "An error occurred while trying to delete the Animal: \n";
+            echo "An error occurred while trying to delete the Animal:"."<br>";
+            echo $th->getMessage();
             throw $th;
         }
     }
@@ -115,7 +100,8 @@ class Animal
         try {
             return $this->db->queryDB($sql, Database::SELECTALL);
         } catch (\Throwable $th) {
-            echo "An error occurred while trying to get all animals: \n";
+            echo "An error occurred while trying to get all animals:"."<br>";
+            echo $th->getMessage();
             throw $th;
         }
     }
@@ -126,7 +112,66 @@ class Animal
         try {
             return $this->db->queryDB($sql, Database::SELECTSINGLE);
         } catch (\Throwable $th) {
-            echo "An error occurred while trying to get the Animal: \n";
+            echo "An error occurred while trying to get the Animal:"."<br>";
+            echo $th->getMessage();
+            throw $th;
+        }
+    }
+
+    public function getAllAnimalsWithJoins()
+    {
+        // Get all.
+    }
+
+    public function updateAnimal($id = -1)
+    {
+        //TODO: Implement the correct updateAnimal method.
+        $sql = "UPDATE animals SET animal_categories_id = :aCID, quantity = :quan, state = :state,
+         price = :price, cost = :cost, barn_id = :bID, supplier_id = :supID WHERE id = :id;";
+        $values = array(
+            array(':id', $id),
+            array(':aCID', $this->animalCategoriesID),
+            array(':bID', $this->barnID),
+            array(':quan', $this->quantity),
+            array(':state', $this->state),
+            array(':supID', $this->supplierID),
+            array(':price', $this->price),
+            array(':cost', $this->cost)
+        );
+        try {
+            $this->db->queryDB($sql, Database::EXECUTE, $values);
+            if ($this->state == 'Active' || $this->state == 'Inactive') {
+                $this->reOpenCycle($id);
+            }
+            return true;
+        } catch (\Throwable $th) {
+            echo "An error occurred while trying to update the animal cycle"."<br>";
+            echo $th->getMessage();
+            throw $th;
+        }
+    }
+
+    public function markAsEnd($id = -1)
+    {
+        $sql = "UPDATE animals SET end_date = NOW(), state = 'Done' WHERE id = $id";
+        try {
+            $this->db->queryDB($sql, Database::EXECUTE);
+            return true;
+        } catch (\Throwable $th) {
+            echo "An error occurred while trying to delete the Animal:"."<br>";
+            echo $th->getMessage();
+            throw $th;
+        }
+    }
+
+    private function reOpenCycle($id = -1)
+    {
+        $sqlDoneRemove = "UPDATE animals SET end_date = NULL WHERE id = :id;";
+        try {
+            $this->db->queryDB($sqlDoneRemove, Database::EXECUTE, array(array(':id', $id)));
+        } catch (\Throwable $th) {
+            echo "An error occurred while trying to reopen the cycle"."<br>";
+            echo $th->getMessage();
             throw $th;
         }
     }
@@ -137,7 +182,8 @@ class Animal
         try {
             return $this->db->queryDB($sql, $mode, $valuesToBind);
         } catch (\Throwable $th) {
-            echo "An error occurred while trying to go execute the query: \n";
+            echo "An error occurred while trying to go execute the query:"."<br>";
+            echo $th->getMessage();
             throw $th;
         }
     }
@@ -149,11 +195,10 @@ class Animal
             $this->db->queryDB($sql, Database::EXECUTE);
             return true;
         } catch (\Throwable $th) {
-            echo "An error occurred while trying to increase the animal quantity \n";
+            echo "An error occurred while trying to increase the animal quantity."."<br>";
+            echo $th->getMessage();
             throw $th;
         }
     }
-
-
 
 }
