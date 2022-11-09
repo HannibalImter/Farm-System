@@ -176,7 +176,7 @@ class Animal
         }
     }
 
-    public function doQuery($sql, $mode, $valuesToBind = array())
+    public function doQuery($sql, $mode, $valuesToBind = array(array()))
     {
         //A function to do a specific  query.
         try {
