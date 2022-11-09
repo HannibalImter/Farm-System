@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <label class="col-sm-3 col-form-label">Animal Type</label>
                 <div class="col-sm-6">
                     <select name="animalType" class="form-select" aria-label="Default select example">
-                        <option selected value="<?php echo $animalType; ?>"><?php echo $views->getCategoryName($animalType); ?></option>
+                        <option class="d-none" selected value="<?php echo $animalType; ?>"><?php echo $views->getCategoryName($animalType); ?></option>
                         <?php
                         foreach ($categoriesNames as $key => $value) {
                             echo "<option value=$value[id]>$value[name]</option>";
@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <label class="col-sm-3 col-form-label">State</label>
                 <div class="col-sm-6">
                     <select name="state" class="form-select" aria-label="Default select example">
-                        <option selected value="<?php echo $state ?>"><?php echo $state ?></option>
+                        <option class="d-none" selected value="<?php echo $state ?>"><?php echo $state ?></option>
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
                     </select>
@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <label class="col-sm-3 col-form-label">Supplier-ID</label>
                 <div class="col-sm-6">
                     <select name="supplierID" class="form-select" aria-label="Default select example">
-                        <option selected value="<?php echo $supplierID; ?>"><?php echo $views->getSupllierName($supplierID); ?></option>
+                        <option class="d-none" selected value="<?php echo $supplierID; ?>"><?php echo $views->getSupllierName($supplierID); ?></option>
                         <?php
                         foreach ($suppliersNames as $key => $value) {
                             echo "<option value=$value[id]>$value[name]</option>";
