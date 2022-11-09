@@ -54,6 +54,17 @@ class Supplier
         }
     }
 
+    private function executeQuery($sqlString, $varArray, $errorMsg)
+    {
+        try {
+            return $this->db->queryDB($sqlString, Database::EXECUTE, $varArray);
+        } catch (\Throwable $th) {
+            echo "$errorMsg"."<br>";
+            echo $th->getMessage();
+            throw $th;
+        }
+    }
+
     public function insertNewSupplier()
     {
         $sql = "INSERT INTO suppliers (name, phone) VALUES (:name, :phone)";
@@ -61,12 +72,7 @@ class Supplier
             array(':name', $this->name),
             array(':phone', $this->phone)
         );
-        try {
-            $this->db->queryDB($sql, Database::EXECUTE, $values);
-        } catch (\Throwable $th) {
-            echo 'An error occurred while trying to insert a new supplier';
-            throw $th;
-        }
+        $this->executeQuery($sql, $values, "An Error occurred while inserting a supplier");
     }
 
     public function deleteSupplier()
@@ -75,26 +81,7 @@ class Supplier
         $values = array(
              array(':id', $this->id)
         );
-        try {
-            $this->db->queryDB($sql, Database::EXECUTE, $values);
-        } catch (\Throwable $th) {
-            echo 'An error occurred while trying to delete a supplier';
-            throw $th;
-        }
-    }
-
-    public function deleteSupplierByPhone($deletePhone = '')
-    {
-        $sql = "UPDATE suppliers SET deleted_at = NOW() WHERE phone = :phone";
-        $values = array(
-             array(':phone', $deletePhone)
-        );
-        try {
-            $this->db->queryDB($sql, Database::EXECUTE, $values);
-        } catch (\Throwable $th) {
-            echo 'An error occurred while trying to delete a supplier ';
-            throw $th;
-        }
+        $this->executeQuery($sql, $values, "An error occurred while trying to delete a supplier");
     }
 
     public function updateSupplier($id=-1, $name='', $phone='')
@@ -105,13 +92,7 @@ class Supplier
             array(':name', $name),
             array(':phone', $phone)
         );
-        try {
-            $this->db->queryDB($sql, Database::EXECUTE, $values);
-        } catch (\Throwable $th) {
-            echo 'An error occurred while trying to update a supplier';
-            echo $th->getMessage();
-            throw $th;
-        }
+        $this->executeQuery($sql, $values, "An error occurred while trying to update a supplier");
     }
 
     public function getSupplier($id = -1)
@@ -126,7 +107,7 @@ class Supplier
         return $this->db->queryDB($sql, Database::SELECTALL);
     }
 
-    public function doQuery($sql, $mode, $valuesToBind = array())
+    public function doQuery($sql, $mode, $valuesToBind = array(array()))
     {
         //A function to do a specific  query.
         try {
@@ -136,5 +117,4 @@ class Supplier
             throw $th;
         }
     }
-
 }

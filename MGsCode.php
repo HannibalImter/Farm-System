@@ -5,7 +5,7 @@ this index file to testing classes.
 include_once 'includes/classes/Supplier.php';
 include_once 'includes/classes/Animal.php';
 
-function logout($data)
+function testlog($data)
 { //debuging tool, just ignore it.
     if (is_array($data))
         $data = implode(', ', $data);
@@ -15,15 +15,18 @@ echo "<h1>Hello World!</h1>";
 // ---------------------------------------------------------------------------------
 
 
-$animal = new Animal();
+$s1 = new Supplier();
 
-// $animal->setValues(1, 1, 3, 23, 13.5, 7.25, 'active');
-// $animal->insertNewAnimal();
+// $result = $s1->insertNewSupplier();
+// , 'sup-updated', '1231231230'
+$result = $s1->getSupplier(49);
 
-// $animal->deleteSupplierByState('active');
-// $animal->increaseQuantity(animalID: 19, increaseBy: 10);
+if (is_null($result)) {
+    echo "is't null";
+} else {
+    echo "it's not null";
+}
 
-$result = $animal->getAllAnimals();
 echo "<pre>";
 print_r($result);
 echo "</pre>";
