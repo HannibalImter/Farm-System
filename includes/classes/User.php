@@ -35,11 +35,10 @@ class User{
     }
 
     public function isValidLogin($pPassword){
-        $sql = "SELECT * FROM users WHERE username = :username AND deleted_at IS NULL";
-        // code befor fixing: $sql was:-> deleted_at = :null";
+        $sql = "SELECT * FROM users WHERE username = :username AND deleted_at = :null";
         $values = array(
             array(':username', $this->username),
-            // array(':null', "")
+            array(':null', "")
         );
 
         $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
