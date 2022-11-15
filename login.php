@@ -7,13 +7,6 @@
 
 ?>
 
-<header class="header">
-            <h1 class="logo"><a href="#">My Farm Mangment system</a></h1>
-            <ul class="main-nav">
-            <li><a href="/Farm-website-main/signupadmin.php">SignUp</a></li>
-            <li><a href="/Farm-website-main/Login.php">Login</a></li>
-        </ul>
-</header> 
 
     <body>
     <div class="form">   
