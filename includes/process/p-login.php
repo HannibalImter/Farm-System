@@ -16,6 +16,8 @@
         {
             $member = new User($username);
 
+            echo $_POST['password'];
+
             $result=$member->isValidLogin($_POST['password']);
 
             if ($result == false)
@@ -29,9 +31,6 @@
                 $_SESSION['id'] = $result['id'];
                 $_SESSION['password'] = $result['password'];//Temproray
                 $_SESSION['isAdmin'] = $result['isAdmin'];
-
-                echo $result['isAdmin'];
-                echo $_SESSION['isAdmin'];
 
                 header("Location: home.php");                
             }

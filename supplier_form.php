@@ -5,7 +5,6 @@
     include_once 'includes/classes/Supplier.php';
 ?>
 
-<body>
 
     <div class="container my-5">
         <h2>List Of Suppliers</h2>
