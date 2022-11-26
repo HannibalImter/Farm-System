@@ -15,7 +15,7 @@ class AllViews
 
     public function getSuplliersView()
     {
-        $sql = "SELECT * FROM suplliersnameview";
+        $sql = "SELECT * FROM suplliersNameView";
         try {
             return $this->db->queryDB($sql, Database::SELECTALL);
         } catch (\Throwable $th) {
@@ -27,7 +27,7 @@ class AllViews
 
     public function getSupllierName($id)
     {
-        $sql = "SELECT name FROM suplliersnameview WHERE id = :id;";
+        $sql = "SELECT name FROM suplliersNameView WHERE id = :id;";
         $values = array(
             array(':id', $id)
         );
@@ -42,7 +42,7 @@ class AllViews
 
     public function getCategoriesView()
     {
-        $sql = "SELECT * FROM categoriesview";
+        $sql = "SELECT * FROM categoriesView";
         try {
             return $this->db->queryDB($sql, Database::SELECTALL);
         } catch (\Throwable $th) {
@@ -54,7 +54,7 @@ class AllViews
 
     public function getCategoryName($id)
     {
-        $sql = "SELECT name FROM categoriesview WHERE id = :id;";
+        $sql = "SELECT name FROM categoriesView WHERE id = :id;";
         $values = array(
             array(':id', $id)
         );
