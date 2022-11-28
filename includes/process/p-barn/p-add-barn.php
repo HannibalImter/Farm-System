@@ -4,9 +4,6 @@ include INC_DIR."/process/p-login.php";
 include INC_DIR.'header.html';
 include_once INC_DIR.'/classes/Barn.php';
 
-$name = '';
-$phone = '';
-
 $errorMsg = '';
 $sucessMsg = '';
 
@@ -56,13 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Name</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="name" value="<?php echo $name; ?>">
+                    <input type="text" class="form-control" name="name">
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Workers Number</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="workersNumber" value="<?php echo $workersNumber; ?>">
+                    <input type="text" class="form-control" name="workersNumber">
                 </div>
             </div>
             <?php

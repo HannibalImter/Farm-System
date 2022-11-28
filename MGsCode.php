@@ -12,6 +12,14 @@ function testlog($data)
     echo "<script>console.log('Log-Out: " . $data . "' );</script>";
 }
 echo "<h1>Hello World!</h1>";
+
+
+function dd($value)
+{
+    echo "$value ".'<br>';
+    var_dump($value);
+    die();
+}
 // ---------------------------------------------------------------------------------
 
 
