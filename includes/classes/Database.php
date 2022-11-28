@@ -13,7 +13,7 @@ class Database
     {
         // mysql:host=localhost;dbname=project", "project_admin", "Your Password
         // mysql:host=localhost;dbname=project", "project_admin", "ABCD
-        $this->pdo = new PDO("mysql:host=localhost;dbname=farm", "root", "2212000Alaref%");
+        $this->pdo = new PDO("mysql:host=localhost;dbname=farm", "root", "");
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
