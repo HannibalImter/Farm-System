@@ -30,9 +30,22 @@ class Admin extends User{
 
     }
 
-    public function deleteUseres()
+    public function deleteUseres($pPassword,$deletedUser)
     {
-
+        $result=$this->isValidLogin($pPassword);
+        
+        if($result!=false)
+        {
+            $sql="DELETE FROM users WHERE username = :deletedUser";
+            $values = array(
+                array(':deletedUser', $deletedUser)
+            );
+            $this->db->queryDB($sql, Database::EXECUTE, $values);
+        }
+        else{
+            echo 'wrong password'; 
+        }
+        
     }
 
 }

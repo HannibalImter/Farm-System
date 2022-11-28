@@ -1,9 +1,8 @@
 <?php
 
     include "UI_include.php";
-    include INC_DIR."/process/p-signup.php";
-    include INC_DIR.'header.html';
-    
+    include INC_DIR."/process/p-AddUser.php";
+    include INC_DIR.'header3.html';
 
 ?>
     
@@ -12,16 +11,15 @@
         <div class="form">
             <div class="heading">
                 <i class="material-icons">create</i>
-                <h4 class="modal-title">Sign Up</h4>
+                <h4 class="modal-title">Add User </h4>
             </div>
             
             <form action="" method="post" class="form-horizontal">
 
-
                 <div class="form-group top"><i class="material-icons">face</i>
                     <label class="control-label">Username</label>
                     <div>
-                        <input type="text" class="form-control" name="username" <?php $h->keepValues($username, 'textbox'); ?> >
+                        <input type="text" class="form-control" name="username" ?> 
                     </div>
                 </div>
 
@@ -39,24 +37,10 @@
                     </div>        	
                 </div>
 
-                <div class="form-group top"><iconify-icon icon="iconoir:farm"  width="35" height="35"></iconify-icon>
-                    <label class="control-label">Your Farm Name</label>
+                <div class="form-group"><i class="material-icons">check</i>
+                    <label class="control-label">Admin Password</label>
                     <div>
-                        <input type="text" class="form-control" name="farmName">
-                    </div>        	
-                </div>
-
-                <div class="form-group top"><iconify-icon icon="iconoir:farm"  width="35" height="35"></iconify-icon>
-                    <label class="control-label">City</label>
-                    <div>
-                        <input type="text" class="form-control" name="farmCity">
-                    </div>        	
-                </div>
-
-                <div class="form-group top"><iconify-icon icon="iconoir:farm"  width="35" height="35"></iconify-icon>
-                    <label class="control-label">Address</label>
-                    <div>
-                        <input type="text" class="form-control" name="farmAddress">
+                        <input type="password" class="form-control" name="adminPassword">
                     </div>        	
                 </div>
 
@@ -67,7 +51,6 @@
                     </div>  
                 </div>		      
             </form>
-            <div class="bottom-text">Already have an account? <a href="/Farm-System/login.php">Login here</a></div>
         </div>
     </body>
 </html>                            

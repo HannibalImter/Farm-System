@@ -75,6 +75,18 @@ class Barn
         }
     }
 
+
+    private function executeQuery($sqlString, $varArray, $errorMsg)
+    {
+        try {
+            return $this->db->queryDB($sqlString, Database::EXECUTE, $varArray);
+        } catch (\Throwable $th) {
+            echo "$errorMsg"."<br>";
+            echo $th->getMessage();
+            throw $th;
+        }
+    }
+
     public function getBarn($id = -1)
     {
         $sql = "SELECT * FROM barn WHERE id = $id AND deleted_at is NULL";
@@ -87,6 +99,17 @@ class Barn
         return $this->db->queryDB($sql, Database::SELECTALL);
     }
 
+    public function updateBarn($id=-1, $name='', $workersNumber='')
+    {
+        $sql = "UPDATE barn SET name = :name, workers_number = :workers_number WHERE id = :id";
+        $values = array(
+            array(':id', $id),
+            array(':name', $name),
+            array(':workers_number', $workersNumber)
+        );
+        $this->executeQuery($sql, $values, "An error occurred while trying to update a barn");
+    }
+
     public function doQuery($sql, $mode, $valuesToBind = array())
     {
         //A function to do a specific  query.
@@ -97,5 +120,6 @@ class Barn
             throw $th;
         }
     }
+
 
 }
