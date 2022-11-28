@@ -1,28 +1,21 @@
 <?php
 
+session_start();
 $h = new Helper();
 $msg = '';
 $username = '';
 
+
 if (isset($_POST['submit']))
 {       
 
-    if ($h->isEmpty(array($_POST['username'], $_POST['password'],$_POST['confirm_password'], $_POST['adminPassowrd'])))
+    if ($h->isEmpty(array($_POST['username'], $_POST['password'],$_POST['confirm_password'], $_POST['adminPassword'])))
     {
         $msg = 'All fields are required';     
     }
-//     else if (!$h->isValidLength($username, 6, 100)){
-//        $msg = 'Username must be between 6 and 100 characters';
-//     }
-//    else if (!$h->isValidLength($_POST['password'])){
-//        $msg = 'Password must be between 8 and 20 characters';
-//     }
-//    else if (!$h->isSecure($_POST['password'])){
-//        $msg = 'Password must contain at least one lowercase character, one uppercase character and one digit';
-//     }
-//     else if (!$h->passwordsMatch($_POST['password'], $_POST['confirm_password'])){
-//         $msg = 'Passwords do not match';
-//     }        
+     else if (!$h->passwordsMatch($_POST['password'], $_POST['confirm_password'])){
+         $msg = 'Passwords do not match';
+        }        
     else
     {
 
@@ -34,9 +27,19 @@ if (isset($_POST['submit']))
         }
         else
         {
-            $user->insertIntoUsers($_POST['password']);
-            
-            header("Location: login.php?new=1");                
+            $admin=new Admin($_SESSION['username']);
+            $result=$admin->isValidLogin($_POST['adminPassword']);
+            if($result==true)
+            {
+                $user->insertIntoUsers($_POST['password']);
+                header("Location: home.php?new=1");
+
+            }
+            else
+            {
+                $msg = 'Admin password is not correct';
+            }
+                            
         }
     }
         

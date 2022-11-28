@@ -7,4 +7,4 @@
 //         $output = implode(',', $output);
 //     echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
 // }
-header("location:home.php");
+header("location:login.php");

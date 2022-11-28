@@ -67,7 +67,7 @@
                     </div>  
                 </div>		      
             </form>
-            <div class="bottom-text">Already have an account? <a href="index.php">Login here</a></div>
+            <div class="bottom-text">Already have an account? <a href="/Farm-System/login.php">Login here</a></div>
         </div>
     </body>
 </html>                            

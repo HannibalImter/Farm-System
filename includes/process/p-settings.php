@@ -9,6 +9,6 @@ if(isset( $_GET['addUser']))
 }
 elseif(isset($_GET['deleteUser']))
 {
-    header("Location: signup.php");
+    header("Location: deleteUser.php");
 
 }

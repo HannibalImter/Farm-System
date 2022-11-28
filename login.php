@@ -44,7 +44,7 @@
                 </div>  
             </div>		              
         </form>			
-        <div class="bottom-text">Don't have an Admin account? <a href="/Farm-website-main/signupAdmin.php">Sign up</a></div>
+        <div class="bottom-text">Don't have an Admin account? <a href="/Farm-System/signup.php">Sign up</a></div>
     </div>
     </body>
 </html>                                		                            

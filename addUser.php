@@ -3,7 +3,6 @@
     include "UI_include.php";
     include INC_DIR."/process/p-AddUser.php";
     include INC_DIR.'header3.html';
-    
 
 ?>
     
@@ -16,7 +15,6 @@
             </div>
             
             <form action="" method="post" class="form-horizontal">
-
 
                 <div class="form-group top"><i class="material-icons">face</i>
                     <label class="control-label">Username</label>
@@ -42,7 +40,7 @@
                 <div class="form-group"><i class="material-icons">check</i>
                     <label class="control-label">Admin Password</label>
                     <div>
-                        <input type="password" class="form-control" name="adminPassowrd">
+                        <input type="password" class="form-control" name="adminPassword">
                     </div>        	
                 </div>
 

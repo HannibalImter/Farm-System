@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use LDAP\Result;
 
 class User{
 
@@ -39,7 +41,6 @@ class User{
         $values = array(
             array(':username', $this->username)
         );
-
         $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
 
         if (isset($result['password']) && $result['password'] == $pPassword)
@@ -62,5 +63,16 @@ class User{
         $this->db->queryDB($sql, Database::EXECUTE, $values);
         
     }
-   
+ 
+    public function getUsers($id){
+        $sql= "SELECT username,id,isAdmin from users where id != :id and deleted_at = '0000-00-00 00:00:00' ";
+    
+        $values = array(
+            array(':id', $id)
+        );
+
+      $result= $this->db->queryDB($sql,Database::SELECTALL,$values);
+      return $result;
+    }
+    
 }

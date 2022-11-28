@@ -43,21 +43,6 @@
                      class="btn btn1 btn-primary btn-lg" style="width: 200px;" name = "deleteUser" >Delete Users</button></center>
                 </div>
                 
-                <div >
-                    <center><button type="submit" 
-                    <?php if($_SESSION['isAdmin'] == 0) echo 'style="display: none;" '?>
-                     class="btn btn1 btn-primary btn-lg" style="width: 200px;" >Edit Farm Name</button></center>
-                </div>
-                
-
-                <div >
-                    <center><button type="submit" class="btn btn1 btn-primary btn-lg" style="width: 200px;" >Change Username</button></center>
-                </div>
-
-                <div >
-                    <center><button type="submit" class="btn btn1 btn-primary btn-lg" style="width: 200px;" >Change Password</button></center>
-                </div>
-                
             </div>		              
             </form>
 
