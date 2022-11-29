@@ -1,15 +1,10 @@
 <?php
     include "UI_include.php";
     include INC_DIR."/process/p-login.php";
-    include INC_DIR.'header.html';
+    include INC_DIR.'header2.html';
     include_once 'includes/classes/Action.php';
 ?>
 
-<header class="header">
-  <h1 class="logo"><a href="#">My Farm Mangment system</a></h1>
-  <ul class="main-nav">
-  </ul>
-</header>
 <body>
 
     <div class="container my-5">
