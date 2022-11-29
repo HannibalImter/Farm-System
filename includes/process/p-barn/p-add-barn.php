@@ -17,8 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorMsg = 'All fields are required';
             break;
         }
-        $addSup = new Barn($name, $workersNumber);
-        $addSup->insertNewBarn();
+        $barn = new Barn($name, $workersNumber);
+        $barn->setValues($name, $workersNumber);
+        $barn->insertNewBarn();
 
         $name = '';
         $workersNumber = '';

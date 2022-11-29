@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
     
     $id = $_GET['id'];
-    $s = new Barn($id);
-    $s->deleteBarn();
+    $s = new Barn();
+    $s->deleteBarn($id);
     header("location: ../../../barn.php");
     exit;
 }

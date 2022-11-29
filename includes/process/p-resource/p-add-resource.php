@@ -5,7 +5,7 @@ include INC_DIR.'header.html';
 include_once INC_DIR.'/classes/Resource.php';
 
 $name = '';
-$phone = '';
+$quantity = '';
 
 $errorMsg = '';
 $sucessMsg = '';
@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         }
         $addRes = new Resource($name, $quantity);
+        $addRes->setValues($name, $quantity);
         $addRes->insertNewResource();
 
         $name = '';

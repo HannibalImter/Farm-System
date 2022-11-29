@@ -33,17 +33,12 @@ class Barn
     public function __construct()
     {
         $this->db = new Database();
+    }
 
-        $arguments = func_get_args();
-        $numberOfArguments = func_num_args();
-        if ($numberOfArguments == 2) {
-            // for insert new barn
-            $this->name = $arguments[0]; //$name;
-            $this->workersNumber = $arguments[1]; //$Number of workers;
-        } elseif ($numberOfArguments == 1) {
-            // for delete a barn
-            $this->id = $arguments[0]; //$id;
-        }
+    public function setValues($name, $workersNumber)
+    {
+        $this->name = $name;
+        $this->workersNumber = $workersNumber;
     }
 
     public function insertNewBarn()
@@ -61,11 +56,11 @@ class Barn
         }
     }
 
-    public function deleteBarn()
+    public function deleteBarn($id = -1)
     {
         $sql = "UPDATE barn SET deleted_at = NOW() WHERE id = :id";
         $values = array(
-             array(':id', $this->id)
+             array(':id', $id)
         );
         try {
             $this->db->queryDB($sql, Database::EXECUTE, $values);
@@ -99,13 +94,13 @@ class Barn
         return $this->db->queryDB($sql, Database::SELECTALL);
     }
 
-    public function updateBarn($id=-1, $name='', $workersNumber='')
+    public function updateBarn($id=-1)
     {
         $sql = "UPDATE barn SET name = :name, workers_number = :workers_number WHERE id = :id";
         $values = array(
             array(':id', $id),
-            array(':name', $name),
-            array(':workers_number', $workersNumber)
+            array(':name', $this->name),
+            array(':workers_number', $this->workersNumber)
         );
         $this->executeQuery($sql, $values, "An error occurred while trying to update a barn");
     }

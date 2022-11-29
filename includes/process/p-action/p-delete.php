@@ -1,6 +1,6 @@
 <?php
 include "../../../UI_include.php";
-include_once INC_DIR.'/classes/Resource.php';
+include_once INC_DIR.'/classes/Action.php';
 
 $id = -1;
 
@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
     
     $id = $_GET['id'];
-    $s = new Resource();
-    $s->deleteResource($id);
-    header("location: ../../../resource.php");
+    $a = new Action();
+    $a->deleteAction($id);
+    header("location: ../../../action.php");
     exit;
 }

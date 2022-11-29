@@ -2,16 +2,16 @@
 include "../../../UI_include.php";
 include INC_DIR."/process/p-login.php";
 include INC_DIR.'header.html';
-include_once INC_DIR.'/classes/Resource.php';
+include_once INC_DIR.'/classes/Action.php';
 
 $id = -1;
-$name = '';
-$workersNumber = '';
+$type = '';
+$description = '';
 
 $errorMsg = '';
 $sucessMsg = '';
 
-define("REDIRECT", "location: ../../../resource.php");
+define("REDIRECT", "location: ../../../action.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
@@ -20,38 +20,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         exit;
     }
     $id = $_GET['id'];
-    $s1 = new Resource();
-    $sup = $s1->getResource($id);
+    $a1 = new Action();
+    $sup = $a1->getAction($id);
     if (!$sup) {
         header(REDIRECT);
         exit;
     }
-    $name = $sup['name'];
-    $quantity = $sup['quantity'];
+    $type = $sup['type'];
+    $description = $sup['description'];
 
 
 } else {
     $id = $_POST['id'];
-    $name = $_POST['name'];
-    $quantity = $_POST['quantity'];
-
+    $type = $_POST['type'];
+    $description = $_POST['description'];
     do {
-        if (empty($name) || empty($quantity)) {
+        if (empty($type) || empty($description)) {
             $errorMsg = 'All fields are required';
             break;
         }
 
-        $barn = new Resource();
+        $action = new Action();
 
         try {
-            $barn->setValues($name, $quantity);
-            $barn->updateResource($id, $name, $quantity);
+            $action->setValues($type, $description);
+            $action->updateAction($id);
         } catch (\Throwable $th) {
             $errorMsg = 'Invalid query';
             break;
         }
 
-        $sucessMsg = 'Resource Updated successfully';
+        $sucessMsg = 'Action Updated successfully';
 
         header(REDIRECT);
         exit;
@@ -62,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 <body>
     <div class="container my-5">
-        <h2>Edit Resource</h2>
+        <h2>Edit Action</h2>
         <?php
         if (!empty($errorMsg)) {
             echo "
@@ -76,15 +75,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <form action="" method="POST">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Name</label>
+                <label class="col-sm-3 col-form-label">type</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="name" value="<?php echo $name; ?>">
+                    <input type="text" class="form-control" name="type" value="<?php echo $type; ?>">
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Quantity</label>
+                <label class="col-sm-3 col-form-label">Description</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="quantity" value="<?php echo $quantity; ?>">
+                    <input type="text" class="form-control" name="description" value="<?php echo $description; ?>">
                 </div>
             </div>
             <?php

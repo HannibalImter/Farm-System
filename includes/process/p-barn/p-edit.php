@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $barn = new Barn();
 
         try {
+            $barn->setValues($name, $workersNumber);
             $barn->updateBarn($id, $name, $workersNumber);
         } catch (\Throwable $th) {
             $errorMsg = 'Invalid query';

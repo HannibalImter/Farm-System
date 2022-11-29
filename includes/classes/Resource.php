@@ -33,17 +33,13 @@ class Resource
     public function __construct()
     {
         $this->db = new Database();
+    }
 
-        $arguments = func_get_args();
-        $numberOfArguments = func_num_args();
-        if ($numberOfArguments == 2) {
-            // for insert new resource
-            $this->name = $arguments[0]; //$name;
-            $this->workersNumber = $arguments[1]; //$Number of workers;
-        } elseif ($numberOfArguments == 1) {
-            // for delete a resource
-            $this->id = $arguments[0]; //$id;
-        }
+
+    public function setValues($name, $quantity)
+    {
+        $this->name = $name;
+        $this->quantity = $quantity;
     }
 
     public function insertNewResource()
@@ -61,11 +57,11 @@ class Resource
         }
     }
 
-    public function deleteResource()
+    public function deleteResource($id = -1)
     {
         $sql = "UPDATE resources SET deleted_at = NOW() WHERE id = :id";
         $values = array(
-             array(':id', $this->id)
+             array(':id', $id)
         );
         try {
             $this->db->queryDB($sql, Database::EXECUTE, $values);
@@ -99,13 +95,13 @@ class Resource
         return $this->db->queryDB($sql, Database::SELECTALL);
     }
 
-    public function updateResource($id=-1, $name='', $quantity='')
+    public function updateResource($id=-1)
     {
         $sql = "UPDATE resources SET name = :name, quantity = :quantity WHERE id = :id";
         $values = array(
             array(':id', $id),
-            array(':name', $name),
-            array(':quantity', $quantity)
+            array(':name', $this->name),
+            array(':quantity', $this->quantity)
         );
         $this->executeQuery($sql, $values, "An error occurred while trying to update a resources");
     }
