@@ -1,7 +1,7 @@
 <?php
 include "../../../UI_include.php";
 include INC_DIR."/process/p-login.php";
-include INC_DIR.'header.html';
+include INC_DIR.'header4.html';
 include_once INC_DIR.'/classes/Animal.php';
 include_once INC_DIR.'/classes/AllViews.php';
 //  ----------------------------------------------------------------
@@ -59,8 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
-
-
 <body>
     <div class="container my-5">
         <h2>New Animal Cycle</h2>
