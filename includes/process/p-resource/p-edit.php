@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         exit;
     }
     $id = $_GET['id'];
-    $s1 = new Barn();
-    $sup = $s1->getBarn($id);
+    $s1 = new Resource();
+    $sup = $s1->getResource($id);
     if (!$sup) {
         header(REDIRECT);
         exit;

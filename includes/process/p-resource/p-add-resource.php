@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorMsg = 'All fields are required';
             break;
         }
-        $addSup = new Resource($name, $quantity);
-        $addSup->insertNewResource();
+        $addRes = new Resource($name, $quantity);
+        $addRes->insertNewResource();
 
         $name = '';
         $quantity = '';

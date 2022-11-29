@@ -63,7 +63,7 @@ class Resource
 
     public function deleteResource()
     {
-        $sql = "UPDATE resource SET deleted_at = NOW() WHERE id = :id";
+        $sql = "UPDATE resources SET deleted_at = NOW() WHERE id = :id";
         $values = array(
              array(':id', $this->id)
         );

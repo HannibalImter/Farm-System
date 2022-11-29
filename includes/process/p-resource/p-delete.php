@@ -14,6 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $id = $_GET['id'];
     $s = new Resource($id);
     $s->deleteResource();
-    header("location: ../../../barn.php");
+    header("location: ../../../resource.php");
     exit;
 }
