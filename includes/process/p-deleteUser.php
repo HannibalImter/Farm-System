@@ -29,7 +29,7 @@ if(isset($_POST['submit']))
 <script>alert('user Deleted Succefully!')</script>
 
 <?php
-    header("location: Home.php?deleted=1");
+    header("location: home.php?deleted=1");
 
  
 }
