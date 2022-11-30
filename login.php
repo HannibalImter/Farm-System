@@ -9,7 +9,7 @@
 
 
     <body>
-    <div class="form">   
+    <div class="form">
 
         <div class = "new">
         <?php
@@ -29,22 +29,22 @@
                 <label class="control-label">Username</label>
                 <div>
                     <input type="text" class="form-control" name="username" <?php $h->keepValues($username, 'textbox'); ?> >
-                </div>        	
+                </div>
             </div>
             <div class="form-group"><i class="material-icons">vpn_key</i>
                 <label class="control-label">Password</label>
                 <div>
                     <input type="password" class="form-control" name="password">
-                </div>        	
+                </div>
             </div>
-            <div class = "formerror"><?php echo $msg; ?></div>                
+            <div class = "formerror"><?php echo $msg; ?></div>
             <div class="form-group">
                 <div>
                     <center><button type="submit" name = "submit" class="btn btn-primary btn-lg">Log In</button></center>
-                </div>  
-            </div>		              
-        </form>			
+                </div>
+            </div>
+        </form>
         <div class="bottom-text">Don't have an Admin account? <a href="/Farm-System/signup.php">Sign up</a></div>
     </div>
     </body>
-</html>                                		                            
+</html>
